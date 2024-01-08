@@ -22,7 +22,7 @@ namespace JsonSerialize.Tests
 
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(instance);
             var item = Newtonsoft.Json.JsonConvert.DeserializeObject<TableState>(json);
-            
+
             // Assert.That(item.ColumnStates["Produit"].GroupStates["Renault Clio"].Records["TotalActuelParProduit"], Is.EqualTo(1400));
             Assert.That(item.RowStates[RowId1].Records["Actuel"], Is.EqualTo(1200));
         }
@@ -34,6 +34,7 @@ namespace JsonSerialize.Tests
 
             var json = System.Text.Json.JsonSerializer.Serialize(instance, new System.Text.Json.JsonSerializerOptions
             {
+                IncludeFields = true,
                 WriteIndented = true // Pour une sortie JSON indentée (facultatif)
             });
             Console.WriteLine(json);
