@@ -4,7 +4,7 @@ namespace JsonSerializeTests.Models
 {
     public class TableState
     {
-        public readonly Dictionary<Guid, RowState> RowStates;
+        public Dictionary<Guid, RowState> RowStates {get; set;}
 
         public TableState()
         {
