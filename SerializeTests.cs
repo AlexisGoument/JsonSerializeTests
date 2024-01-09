@@ -32,13 +32,8 @@ namespace JsonSerialize.Tests
         {
             TableState instance = GetTable();
 
-            var json = System.Text.Json.JsonSerializer.Serialize(instance, new System.Text.Json.JsonSerializerOptions
-            {
-                IncludeFields = true,
-                WriteIndented = true // Pour une sortie JSON indentée (facultatif)
-            });
-            Console.WriteLine(json);
-            var item = System.Text.Json.JsonSerializer.Deserialize<TableState>(json);
+            var json = JsonSerializer.Serialize(instance);
+            var item = JsonSerializer.Deserialize<TableState>(json);
 
             // Assert.That(item.ColumnStates["Produit"].GroupStates["Renault Clio"].Records["TotalActuelParProduit"], Is.EqualTo(1400));
             Assert.That(item.RowStates[RowId1].Records["Actuel"], Is.EqualTo(1200));
